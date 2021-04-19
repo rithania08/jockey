@@ -121,11 +121,11 @@
 									<tr>
 										<th>Total Realised</th>
 										<td>
-											<input type="text" class="form-control" readonly value="0" id="total_realised">
+											<input type="text" class="form-control" name="total_realised" readonly value="0" id="total_realised">
 										</td>
 										<th>Actual Sales</th>
 										<td>
-											<input type="text" class="form-control" readonly value="0" id="actual_sales">
+											<input type="text" class="form-control" name="actual_sales" readonly value="0" id="actual_sales">
 										</td>
 									</tr>
 									<tr>
