@@ -1025,7 +1025,7 @@ class Common_controller extends BaseController {
        $closing_bill_no = $_POST['closing_bill_no'];
        $closing_date = $_POST['closing_date'];
        $record = $this->common_model->get_records("tbl_bills", "status = '0' and id ='$id'")[0];
-       if ($record->quantity == $quantity && $record->amount == $amount && $record->payment_method == $payment_method) {
+       if ( $record->amount == $amount && $record->payment_method == $payment_method) {
            $info['bill_status'] = 1;
            $info['closed_amount'] =  $record->closed_amount + $amount;
            $info['closing_bill_no'] = $closing_bill_no;
@@ -1033,10 +1033,9 @@ class Common_controller extends BaseController {
            $info['bill_closed_date'] = date("Y-m-d");
            $this->common_model->update("tbl_bills", $info, "status='0' and id='$id'");
            $data['result'] = 1;
-       } else if ($record->quantity != $quantity && $record->payment_method != $payment_method) {
+       } else if ( $record->payment_method != $payment_method) {
            $data['result'] = 2;
-       } else if ($record->quantity != $quantity) {
-           $data['result'] = 6;
+       
        } else if ($record->payment_method != $payment_method) {
            $data['result'] = 8;
        }  else if ($record->amount != $amount) {
@@ -1045,6 +1044,7 @@ class Common_controller extends BaseController {
            $this->common_model->update("tbl_bills", $info, "status='0' and id='$id'");
            $data['result'] = 7;
        }
+
        echo json_encode($data);
    }
 

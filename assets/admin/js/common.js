@@ -45,7 +45,6 @@ jQuery(document).ready(function(){
 		var actual_sales = $('#actual_sales').val();
 		var total_bank_amount = $('#total_bank_amount').val();
 		var bank_cash = $('#bank_cash').val();
-
 		
 		if(is_required(this_id) === true)
 		{
@@ -345,7 +344,7 @@ jQuery(document).ready(function(){
 					}
 					else if(response.result == 2)
 					{
-						toastr.error('Payment method, Quantity and Amount does not match!');
+						toastr.error('Payment method and Amount does not match!');
 						$(this_id + ' input[type=submit]').removeAttr('disabled');
 					}
 
@@ -366,13 +365,6 @@ jQuery(document).ready(function(){
 						toastr.error('Payment method and Quantity does not match!');
 						$(this_id + ' input[type=submit]').removeAttr('disabled');
 					}
-
-					else if(response.result == 6)
-					{
-						toastr.error('Quantity does not match!');
-						$(this_id + ' input[type=submit]').removeAttr('disabled');
-					}
-
 					else if(response.result == 7)
 					{
 						toastr.error('Amount does not match!');
