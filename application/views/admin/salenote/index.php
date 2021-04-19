@@ -69,10 +69,11 @@
 
                                                         <?php if (sizeof($this->common_model->get_records("tbl_salenote_registers", "salenote_id = '$record->id' and status = '0'")) == 0): ?>
 
-                                                        <?php else: ?>
+                                                        <?php else: ?> 
                                                             <span class="btn btn-sm btn-primary" onclick="files_upload('<?= $record->id ?>', '<?= $record->shopper_sale_file ?>', '<?= $record->bank_statement_file ?>', '<?= $record->cc_bank_statement_file ?>');">
                                                                 Verify
                                                             </span>
+                                                           
                                                             <span class="btn btn-sm btn-info" onclick="view_deposits('<?= $record->id ?>')">
                                                                 Deposits
                                                             </span>
