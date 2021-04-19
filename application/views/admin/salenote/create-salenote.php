@@ -24,16 +24,17 @@
 									<tr>
 										<th>Store ID</th>
 										<td colspan="3">
-											<select class="form-control select2" name="store_id" id="store-id" required>
-											<option value="0">
-														Select a store
-													</option>
-												<?php foreach($this->common_model->get_records("tbl_stores", "status = 0") as $store): ?>
-													<option value="<?=$store->id?>">
-														<?=$store->store_id?> - <?=$store->name?>
-													</option>
-												<?php endforeach; ?>
-											</select>
+										<?php
+										
+												 $store =$this->common_model->get_records("tbl_stores", "status = 0 and  id = '" . $_SESSION['store_id'] . "'")[0];
+												  ?>
+											<input class="form-control" value='<?=$store->store_id?>-<?=$store->name?>' name="store_id" id="store-id" readonly>
+											
+											
+														
+												
+											
+												
 										</td>
 									</tr>
 									<tr>
