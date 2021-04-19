@@ -69,16 +69,20 @@
 
                                                         <?php if (sizeof($this->common_model->get_records("tbl_salenote_registers", "salenote_id = '$record->id' and status = '0'")) == 0): ?>
 
-                                                        <?php else: ?> 
+
+                                                        <?php else:
+                                                            if(($_SESSION['role'] != ROLE_STORE_ADMIN)) { ?>
                                                             <span class="btn btn-sm btn-primary" onclick="files_upload('<?= $record->id ?>', '<?= $record->shopper_sale_file ?>', '<?= $record->bank_statement_file ?>', '<?= $record->cc_bank_statement_file ?>');">
                                                                 Verify
                                                             </span>
-                                                           
+                                                            <?php }?>
+
                                                             <span class="btn btn-sm btn-info" onclick="view_deposits('<?= $record->id ?>')">
                                                                 Deposits
                                                             </span>
-                                                        <?php endif; 
-                                                       ?>
+                                                       
+                                                       <?php endif; 
+                                                        if(date("d-m-Y") == date("d-m-Y", strtotime($record->date_time))) {?>
 
                                                         <a href="<?= base_url() ?>admin/edit-salenote-page/<?= $record->id ?>" class="btn btn-sm btn-warning">
                                                             Edit
@@ -86,6 +90,9 @@
                                                         <button type="submit" class="btn btn-sm btn-danger">
                                                             Delete
                                                         </button>
+                                                    <?php }?>
+
+                                                      
                                                     
                                                     </form>
                                                 </td>
